@@ -1,0 +1,44 @@
+[
+  {
+    "icon": "message-circle",
+    "title": "AI Chatbot",
+    "subtitle": "Just Ask, We'll Guide",
+    "description": "Type or speak your destination. Our AI understands natural language and finds the best route instantly.",
+    "color": "primary"
+  },
+  {
+    "icon": "mic",
+    "title": "Voice Search",
+    "subtitle": "Hands-Free Navigation",
+    "description": "Speak your destination in English or Tagalog. Perfect when you're on the move.",
+    "color": "secondary"
+  },
+  {
+    "icon": "map-pin",
+    "title": "Real-Time GPS",
+    "subtitle": "Always Know Where You Are",
+    "description": "Live location tracking ensures you never miss your stop or terminal.",
+    "color": "accent"
+  },
+  {
+    "icon": "route",
+    "title": "Step-by-Step Guidance",
+    "subtitle": "Turn-by-Turn Instructions",
+    "description": "From your hotel to the terminal, we guide you every step with clear directions.",
+    "color": "primary"
+  },
+  {
+    "icon": "sparkles",
+    "title": "Smart Recommendations",
+    "subtitle": "Discover Hidden Gems",
+    "description": "Get personalized tourist spot suggestions along your route.",
+    "color": "secondary"
+  },
+  {
+    "icon": "calculator",
+    "title": "Fare Calculator",
+    "subtitle": "Budget Your Trip",
+    "description": "Know exactly how much your journey will cost before you board.",
+    "color": "accent"
+  }
+]

@@ -1,0 +1,89 @@
+---
+import HugeIcon from '../ui/HugeIcon';
+---
+
+<header class="fixed top-0 w-full z-50 transition-all duration-300" id="header">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16 md:h-20">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/" class="flex items-center space-x-2">
+          <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-lg">BS</span>
+          </div>
+          <span class="text-xl font-bold text-gray-900">BaguioStride</span>
+        </a>
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="#features" class="text-gray-700 hover:text-primary transition">Features</a>
+        <a href="#how-it-works" class="text-gray-700 hover:text-primary transition">How It Works</a>
+        <a href="#download" class="btn btn-primary bg-primary hover:bg-primary-dark text-white border-none px-6">Download App</a>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden" id="mobile-menu-button" aria-label="Toggle menu">
+        <HugeIcon client:load name="menu" className="w-6 h-6" size={24} />
+      </button>
+    </div>
+  </nav>
+  
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300">
+    <div class="flex flex-col h-full">
+      <div class="flex justify-between items-center p-4 border-b">
+        <span class="text-xl font-bold text-gray-900">BaguioStride</span>
+        <button id="mobile-menu-close" aria-label="Close menu">
+          <HugeIcon client:load name="close" className="w-6 h-6" size={24} />
+        </button>
+      </div>
+      <nav class="flex flex-col p-4 space-y-4">
+        <a href="#features" class="text-gray-700 hover:text-primary transition py-2">Features</a>
+        <a href="#how-it-works" class="text-gray-700 hover:text-primary transition py-2">How It Works</a>
+        <a href="#download" class="btn btn-primary bg-primary hover:bg-primary-dark text-white border-none w-full mt-4">Download App</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('header');
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+  // Scroll effect
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-md');
+    } else {
+      header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-md');
+    }
+  });
+
+  // Mobile menu toggle
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.remove('hidden', 'translate-x-full');
+    mobileMenu?.classList.add('translate-x-0');
+  });
+
+  mobileMenuClose?.addEventListener('click', () => {
+    mobileMenu?.classList.add('translate-x-full');
+    setTimeout(() => {
+      mobileMenu?.classList.add('hidden');
+    }, 300);
+  });
+
+  // Close mobile menu when clicking a link
+  const mobileLinks = mobileMenu?.querySelectorAll('a');
+  mobileLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('translate-x-full');
+      setTimeout(() => {
+        mobileMenu?.classList.add('hidden');
+      }, 300);
+    });
+  });
+</script>
+

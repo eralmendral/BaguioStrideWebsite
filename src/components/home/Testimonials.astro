@@ -1,0 +1,64 @@
+---
+import TestimonialCard from '../ui/TestimonialCard.astro';
+---
+
+<section id="testimonials" class="py-24 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Loved by <span class="text-primary">Thousands</span>
+      </h2>
+      <p class="text-xl text-gray-600">
+        See what our users are saying about BaguioStride
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <TestimonialCard
+        name="Maria Santos"
+        role="Tourist from Manila"
+        rating={5}
+        text="This app saved my vacation! I was so lost trying to figure out the jeepney routes, but BaguioStride made it so easy. The AI chatbot understood exactly what I needed."
+      />
+      
+      <TestimonialCard
+        name="John Chen"
+        role="International Visitor"
+        rating={5}
+        text="As someone who doesn't speak Tagalog, this app was a lifesaver. The voice search worked perfectly, and I never got lost once during my week in Baguio."
+      />
+      
+      <TestimonialCard
+        name="Ana Dela Cruz"
+        role="Local Commuter"
+        rating={5}
+        text="I've been using this daily for my commute. The real-time GPS and fare calculator help me plan my trips perfectly. Highly recommend!"
+      />
+      
+      <TestimonialCard
+        name="Robert Kim"
+        role="Backpacker"
+        rating={4}
+        text="The step-by-step guidance is incredibly detailed. Even as a first-time visitor, I felt like a local navigating the city. Great app!"
+      />
+      
+      <TestimonialCard
+        name="Lisa Garcia"
+        role="Family Traveler"
+        rating={5}
+        text="Traveling with kids, we needed reliable navigation. BaguioStride made our family trip stress-free. The smart recommendations helped us discover amazing places too!"
+      />
+      
+      <TestimonialCard
+        name="Michael Tan"
+        role="Business Traveler"
+        rating={5}
+        text="Time is money, and this app saved me hours. The route suggestions are always accurate, and I love the fare calculator feature."
+      />
+      
+    </div>
+  </div>
+</section>
+

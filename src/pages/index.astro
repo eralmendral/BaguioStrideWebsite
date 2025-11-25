@@ -1,0 +1,28 @@
+---
+import AboutStride from '../components/home/AboutStride.astro';
+import Features from '../components/home/Features.astro';
+import FinalCTA from '../components/home/FinalCTA.astro';
+import Hero from '../components/home/Hero.astro';
+import HowItWorks from '../components/home/HowItWorks.astro';
+import ProblemStatement from '../components/home/ProblemStatement.astro';
+import RouteShowcase from '../components/home/RouteShowcase.astro';
+import Footer from '../components/layout/Footer.astro';
+import Header from '../components/layout/Header.astro';
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+---
+
+<Layout title="BaguioStride - Navigate Baguio Like a Local">
+  <Header />
+  <main>
+    <Hero />
+    <ProblemStatement />
+    <AboutStride />
+    <Features />
+    <HowItWorks />
+    <RouteShowcase />
+    <FinalCTA />
+  </main>
+  <Footer />
+</Layout>
+

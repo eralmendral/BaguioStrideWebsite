@@ -1,0 +1,83 @@
+---
+import FeatureCard from '../ui/FeatureCard.astro';
+import FeatureIcon from '../ui/FeatureIcon';
+
+const features = [
+  {
+    icon: 'message-circle',
+    title: 'AI Chatbot',
+    subtitle: "Just Ask, We'll Guide",
+    description:
+      'Type or speak your destination. Our AI understands natural language and finds the best route instantly.',
+    color: 'primary' as const,
+  },
+  {
+    icon: 'mic',
+    title: 'Voice Search',
+    subtitle: 'Hands-Free Navigation',
+    description: "Speak your destination in English or Tagalog. Perfect when you're on the move.",
+    color: 'secondary' as const,
+  },
+  {
+    icon: 'map-pin',
+    title: 'Real-Time GPS',
+    subtitle: 'Always Know Where You Are',
+    description: 'Live location tracking ensures you never miss your stop or terminal.',
+    color: 'accent' as const,
+  },
+  {
+    icon: 'route',
+    title: 'Step-by-Step Guidance',
+    subtitle: 'Turn-by-Turn Instructions',
+    description: 'From your hotel to the terminal, we guide you every step with clear directions.',
+    color: 'primary' as const,
+  },
+  {
+    icon: 'sparkles',
+    title: 'Smart Recommendations',
+    subtitle: 'Discover Hidden Gems',
+    description: 'Get personalized tourist spot suggestions along your route.',
+    color: 'secondary' as const,
+  },
+  {
+    icon: 'calculator',
+    title: 'Fare Calculator',
+    subtitle: 'Budget Your Trip',
+    description: 'Know exactly how much your journey will cost before you board.',
+    color: 'accent' as const,
+  },
+];
+---
+
+<section id="features" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Your Intelligent <span class="text-primary">Travel Companion</span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Everything you need to navigate Baguio's jeepney system with confidence
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {features.map((feature) => (
+        <div class="group p-6 rounded-2xl border-2 border-gray-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300">
+          <div class={`w-14 h-14 ${
+            feature.color === 'primary' ? 'bg-primary/10 text-primary' :
+            feature.color === 'secondary' ? 'bg-secondary/10 text-secondary' :
+            'bg-accent/10 text-accent'
+          } rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+            <FeatureIcon client:load icon={feature.icon} className="w-7 h-7" />
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
+          <p class="text-primary font-semibold mb-3">{feature.subtitle}</p>
+          <p class="text-gray-600">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+    
+  </div>
+</section>
+

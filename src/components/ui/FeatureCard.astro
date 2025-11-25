@@ -1,0 +1,30 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  color?: 'primary' | 'secondary' | 'accent';
+}
+
+const { icon, title, subtitle, description, color = 'primary' } = Astro.props;
+
+const colorClasses = {
+  primary: 'bg-primary/10 text-primary',
+  secondary: 'bg-secondary/10 text-secondary',
+  accent: 'bg-accent/10 text-accent',
+};
+---
+
+<div class="group p-6 rounded-2xl border-2 border-gray-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300">
+  <div class={`w-14 h-14 ${colorClasses[color]} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+    <div class="w-7 h-7">
+      <!-- Icon will be rendered by parent component -->
+      <slot name="icon" />
+    </div>
+  </div>
+  <h3 class="text-xl font-bold text-gray-900 mb-2">{title}</h3>
+  <p class="text-primary font-semibold mb-3">{subtitle}</p>
+  <p class="text-gray-600">{description}</p>
+</div>
+

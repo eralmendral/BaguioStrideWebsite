@@ -1,0 +1,54 @@
+---
+import AppStoreBadges from '../ui/AppStoreBadges.astro';
+import HugeIcon from '../ui/HugeIcon';
+---
+
+<section class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-green-50 via-white to-blue-50 pt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      
+      <!-- Left Content -->
+      <div class="text-center lg:text-left">
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6">
+          Navigate Baguio <span class="text-primary">Like a Local</span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0">
+          AI-powered jeepney route guide for tourists and commuters
+        </p>
+        
+        <!-- Download Buttons -->
+        <div class="mt-8">
+          <AppStoreBadges />
+        </div>
+      </div>
+      
+      <!-- Right Content - Phone Mockup -->
+      <div class="relative hidden lg:block">
+        <div class="relative z-10 animate-float">
+          <div class="w-full max-w-md mx-auto bg-gray-900 rounded-[3rem] p-4 shadow-2xl">
+            <div class="bg-white rounded-[2.5rem] overflow-hidden aspect-[9/19.5] flex items-center justify-center">
+              <div class="text-center p-8">
+                <div class="w-24 h-24 bg-primary/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <span class="text-4xl">🚌</span>
+                </div>
+                <p class="text-gray-600 text-sm">App Preview</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Decorative Elements -->
+        <div class="absolute top-20 right-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 left-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <HugeIcon client:load name="arrow-down" className="w-6 h-6 text-gray-400" size={24} />
+  </div>
+</section>
+
