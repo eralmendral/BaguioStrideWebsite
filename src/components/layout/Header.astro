@@ -2,49 +2,92 @@
 import HugeIcon from '../ui/HugeIcon';
 ---
 
-<header class="fixed top-0 w-full z-50 transition-all duration-300" id="header">
+<header class="fixed top-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm" id="header">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16 md:h-20">
       <!-- Logo -->
-      <div class="flex-shrink-0">
+      <div class="flex-shrink-0 z-50">
         <a href="/" class="flex items-center space-x-2">
-          <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+          <div class="w-8 h-8 md:w-10 md:h-10 bg-primary rounded-lg flex items-center justify-center">
             <HugeIcon client:load name="route" className="text-white" size={20} strokeWidth={2} />
           </div>
-          <span class="text-xl font-bold text-gray-900">BaguioStride</span>
+          <span class="text-lg md:text-xl font-bold text-gray-900">BaguioStride</span>
         </a>
       </div>
       
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center space-x-8">
-        <a href="#features" class="text-gray-700 hover:text-primary transition">Features</a>
-        <a href="#how-it-works" class="text-gray-700 hover:text-primary transition">How It Works</a>
-        <a href="#download" class="btn btn-primary bg-primary hover:bg-primary-dark text-white border-none px-6">Download App</a>
+      <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
+        <a href="#features" class="text-gray-700 hover:text-primary transition-colors duration-200 text-sm xl:text-base">Features</a>
+        <a href="#how-it-works" class="text-gray-700 hover:text-primary transition-colors duration-200 text-sm xl:text-base">How It Works</a>
+        <a href="#download" class="btn btn-primary bg-primary hover:bg-primary-dark text-white border-none px-4 xl:px-6 py-2 text-sm xl:text-base whitespace-nowrap">Download App</a>
       </div>
       
-      <!-- Mobile Menu Button -->
-      <button class="md:hidden" id="mobile-menu-button" aria-label="Toggle menu">
-        <HugeIcon client:load name="menu" className="w-6 h-6" size={24} />
+      <!-- Mobile/Tablet Menu Button -->
+      <button 
+        class="lg:hidden p-2 -mr-2 rounded-lg hover:bg-gray-100 active:bg-gray-200 transition-colors duration-200" 
+        id="mobile-menu-button" 
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <HugeIcon client:load name="menu" className="w-6 h-6 text-gray-700" size={24} />
       </button>
     </div>
   </nav>
   
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300">
+  <!-- Mobile/Tablet Menu -->
+  <div 
+    id="mobile-menu" 
+    class="hidden lg:hidden fixed inset-0 bg-white z-[60] transform translate-x-full transition-transform duration-300 ease-in-out"
+    aria-hidden="true"
+  >
     <div class="flex flex-col h-full">
-      <div class="flex justify-between items-center p-4 border-b">
-        <span class="text-xl font-bold text-gray-900">BaguioStride</span>
-        <button id="mobile-menu-close" aria-label="Close menu">
-          <HugeIcon client:load name="close" className="w-6 h-6" size={24} />
+      <!-- Menu Header -->
+      <div class="flex justify-between items-center p-4 sm:p-6 border-b border-gray-200 bg-white">
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <HugeIcon client:load name="route" className="text-white" size={20} strokeWidth={2} />
+          </div>
+          <span class="text-xl font-bold text-gray-900">BaguioStride</span>
+        </div>
+        <button 
+          id="mobile-menu-close" 
+          aria-label="Close menu"
+          class="p-2 rounded-lg hover:bg-gray-100 active:bg-gray-200 transition-colors duration-200"
+        >
+          <HugeIcon client:load name="close" className="w-6 h-6 text-gray-700" size={24} />
         </button>
       </div>
-      <nav class="flex flex-col p-4 space-y-4">
-        <a href="#features" class="text-gray-700 hover:text-primary transition py-2">Features</a>
-        <a href="#how-it-works" class="text-gray-700 hover:text-primary transition py-2">How It Works</a>
-        <a href="#download" class="btn btn-primary bg-primary hover:bg-primary-dark text-white border-none w-full mt-4">Download App</a>
+      
+      <!-- Menu Navigation -->
+      <nav class="flex flex-col flex-1 p-4 sm:p-6 space-y-1 overflow-y-auto">
+        <a 
+          href="#features" 
+          class="text-gray-700 hover:text-primary hover:bg-gray-50 transition-all duration-200 py-3 px-4 rounded-lg text-base font-medium"
+        >
+          Features
+        </a>
+        <a 
+          href="#how-it-works" 
+          class="text-gray-700 hover:text-primary hover:bg-gray-50 transition-all duration-200 py-3 px-4 rounded-lg text-base font-medium"
+        >
+          How It Works
+        </a>
+        <a 
+          href="#download" 
+          class="btn btn-primary bg-primary hover:bg-primary-dark text-white border-none w-full mt-4 py-3 text-base font-semibold rounded-lg"
+        >
+          Download App
+        </a>
       </nav>
     </div>
   </div>
+  
+  <!-- Mobile Menu Overlay -->
+  <div 
+    id="mobile-menu-overlay" 
+    class="hidden lg:hidden fixed inset-0 bg-black/50 z-[55] opacity-0 transition-opacity duration-300"
+    aria-hidden="true"
+  ></div>
 </header>
 
 <script>
@@ -52,38 +95,107 @@ import HugeIcon from '../ui/HugeIcon';
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileMenuClose = document.getElementById('mobile-menu-close');
+  const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+  const body = document.body;
 
-  // Scroll effect
+  // Scroll effect - enhance shadow on scroll
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
-      header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-md');
+      header.classList.add('shadow-lg');
+      header.classList.remove('shadow-sm');
     } else {
-      header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-md');
+      header.classList.remove('shadow-lg');
+      header.classList.add('shadow-sm');
     }
   });
 
+  // Function to open mobile menu
+  function openMobileMenu() {
+    if (!mobileMenu || !mobileMenuOverlay) return;
+    
+    // Prevent body scroll
+    body.style.overflow = 'hidden';
+    
+    // Show overlay and menu
+    mobileMenuOverlay.classList.remove('hidden');
+    mobileMenu.classList.remove('hidden');
+    
+    // Trigger animations
+    requestAnimationFrame(() => {
+      mobileMenuOverlay.classList.remove('opacity-0');
+      mobileMenuOverlay.classList.add('opacity-100');
+      mobileMenu.classList.remove('translate-x-full');
+      mobileMenu.classList.add('translate-x-0');
+    });
+    
+    // Update ARIA attributes
+    mobileMenuButton?.setAttribute('aria-expanded', 'true');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    mobileMenuOverlay.setAttribute('aria-hidden', 'false');
+  }
+
+  // Function to close mobile menu
+  function closeMobileMenu() {
+    if (!mobileMenu || !mobileMenuOverlay) return;
+    
+    // Hide overlay and menu with animations
+    mobileMenuOverlay.classList.remove('opacity-100');
+    mobileMenuOverlay.classList.add('opacity-0');
+    mobileMenu.classList.remove('translate-x-0');
+    mobileMenu.classList.add('translate-x-full');
+    
+    // Restore body scroll
+    body.style.overflow = '';
+    
+    // Hide elements after animation
+    setTimeout(() => {
+      mobileMenuOverlay.classList.add('hidden');
+      mobileMenu.classList.add('hidden');
+    }, 300);
+    
+    // Update ARIA attributes
+    mobileMenuButton?.setAttribute('aria-expanded', 'false');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    mobileMenuOverlay.setAttribute('aria-hidden', 'true');
+  }
+
   // Mobile menu toggle
-  mobileMenuButton?.addEventListener('click', () => {
-    mobileMenu?.classList.remove('hidden', 'translate-x-full');
-    mobileMenu?.classList.add('translate-x-0');
+  mobileMenuButton?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+    if (isExpanded) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
   });
 
-  mobileMenuClose?.addEventListener('click', () => {
-    mobileMenu?.classList.add('translate-x-full');
-    setTimeout(() => {
-      mobileMenu?.classList.add('hidden');
-    }, 300);
-  });
+  // Close button
+  mobileMenuClose?.addEventListener('click', closeMobileMenu);
+
+  // Close when clicking overlay
+  mobileMenuOverlay?.addEventListener('click', closeMobileMenu);
 
   // Close mobile menu when clicking a link
   const mobileLinks = mobileMenu?.querySelectorAll('a');
   mobileLinks?.forEach(link => {
     link.addEventListener('click', () => {
-      mobileMenu?.classList.add('translate-x-full');
-      setTimeout(() => {
-        mobileMenu?.classList.add('hidden');
-      }, 300);
+      closeMobileMenu();
     });
+  });
+
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu?.classList.contains('translate-x-0')) {
+      closeMobileMenu();
+    }
+  });
+
+  // Close menu on window resize if it's open and we're on desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024 && mobileMenu?.classList.contains('translate-x-0')) {
+      closeMobileMenu();
+    }
   });
 </script>
 

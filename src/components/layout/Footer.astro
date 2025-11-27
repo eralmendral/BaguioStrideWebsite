@@ -2,33 +2,33 @@
 import HugeIcon from '../ui/HugeIcon';
 ---
 
-<footer class="bg-gray-900 text-gray-300 py-12">
+<footer class="bg-gray-900 text-gray-300 py-8 sm:py-12">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid md:grid-cols-2 gap-8">
+    <div class="grid sm:grid-cols-2 gap-6 sm:gap-8">
       <!-- Brand -->
-      <div>
-        <div class="flex items-center space-x-2 mb-4">
+      <div class="text-center sm:text-left">
+        <div class="flex items-center justify-center sm:justify-start space-x-2 mb-3 sm:mb-4">
           <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
             <HugeIcon client:load name="route" className="text-white" size={20} strokeWidth={2} />
           </div>
-          <span class="text-xl font-bold text-white">BaguioStride</span>
+          <span class="text-lg sm:text-xl font-bold text-white">BaguioStride</span>
         </div>
-        <p class="text-sm text-gray-400">
+        <p class="text-xs sm:text-sm text-gray-400 max-w-md mx-auto sm:mx-0">
           Navigate Baguio like a local with AI-powered jeepney route guidance.
         </p>
       </div>
       
       <!-- Download -->
-      <div>
-        <h3 class="text-white font-semibold mb-4">Download</h3>
-        <div class="flex flex-wrap gap-3">
+      <div class="text-center sm:text-left">
+        <h3 class="text-white font-semibold mb-3 sm:mb-4 text-base sm:text-lg">Download</h3>
+        <div class="flex flex-wrap justify-center sm:justify-start gap-2 sm:gap-3">
           <!-- iOS Download Button -->
           <a 
             href="/downloads/baguiostride.ipa" 
             download
-            class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+            class="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
           >
-            <HugeIcon client:load name="ios" className="w-5 h-5 text-white" size={20} />
+            <HugeIcon client:load name="ios" className="w-4 h-4 sm:w-5 sm:h-5 text-white" size={20} />
             <span>iOS</span>
           </a>
           
@@ -36,16 +36,16 @@ import HugeIcon from '../ui/HugeIcon';
           <a 
             href="/downloads/baguiostride.apk" 
             download
-            class="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+            class="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-xs sm:text-sm font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
           >
-            <HugeIcon client:load name="android" className="w-5 h-5 text-white" size={20} />
+            <HugeIcon client:load name="android" className="w-4 h-4 sm:w-5 sm:h-5 text-white" size={20} />
             <span>Android</span>
           </a>
         </div>
       </div>
     </div>
     
-    <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+    <div class="border-t border-gray-800 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-xs sm:text-sm text-gray-400">
       <p>&copy; 2024 BaguioStride. All rights reserved.</p>
     </div>
   </div>
