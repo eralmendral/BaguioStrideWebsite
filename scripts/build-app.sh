@@ -84,8 +84,36 @@ build_android() {
     # Configure Flutter to use the Android SDK
     flutter config --android-sdk "$ANDROID_HOME" > /dev/null 2>&1 || true
     
+    # Get Mapbox token from environment or config file
+    MAPBOX_TOKEN="${MAPBOX_ACCESS_TOKEN:-}"
+    if [ -z "$MAPBOX_TOKEN" ]; then
+        # Try to read from mcp-config.json
+        if [ -f "$PROJECT_ROOT/mcp-config.json" ]; then
+            MAPBOX_TOKEN=$(grep -o '"MAPBOX_ACCESS_TOKEN":\s*"[^"]*"' "$PROJECT_ROOT/mcp-config.json" | cut -d'"' -f4 || echo "")
+        fi
+    fi
+    
+    # Try to read from ~/.mapbox or ~/mapbox files (like iOS build does)
+    if [ -z "$MAPBOX_TOKEN" ]; then
+        if [ -f ~/.mapbox ]; then
+            MAPBOX_TOKEN=$(cat ~/.mapbox 2>/dev/null | tr -d '\n' || echo "")
+        elif [ -f ~/mapbox ]; then
+            MAPBOX_TOKEN=$(cat ~/mapbox 2>/dev/null | tr -d '\n' || echo "")
+        fi
+    fi
+    
+    # Build command with Mapbox token if available
+    BUILD_CMD="flutter build apk --release"
+    if [ -n "$MAPBOX_TOKEN" ]; then
+        BUILD_CMD="$BUILD_CMD --dart-define=MAPBOX_ACCESS_TOKEN=$MAPBOX_TOKEN"
+        echo -e "${GREEN}✓ Mapbox token found, will be included in build${NC}"
+    else
+        echo -e "${YELLOW}⚠️  Mapbox token not found. Map may not work in the APK.${NC}"
+        echo -e "${YELLOW}   Set MAPBOX_ACCESS_TOKEN environment variable or create ~/.mapbox file${NC}"
+    fi
+    
     echo -e "${YELLOW}🔨 Building release APK...${NC}"
-    flutter build apk --release
+    eval "$BUILD_CMD"
     
     # Copy APK to downloads folder
     if [ -f "$APP_DIR/build/app/outputs/flutter-apk/app-release.apk" ]; then
