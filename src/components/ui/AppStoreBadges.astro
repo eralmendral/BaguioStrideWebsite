@@ -7,19 +7,53 @@ import HugeIcon from './HugeIcon';
   <a 
     href="/downloads/baguiostride.ipa" 
     download
-    class="inline-flex items-center gap-3 px-6 py-3 bg-green-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl"
+    class="inline-flex items-center gap-3 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl"
   >
     <HugeIcon client:load name="ios" className="w-6 h-6 text-white" size={24} />
     <span>Download for iOS</span>
   </a>
   
   <!-- Android Download Button -->
-  <a 
-    href="/downloads/baguiostride.apk" 
-    download
-    class="inline-flex items-center gap-3 px-6 py-3 bg-orange-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl"
+  <button
+    id="android-download-btn"
+    class="inline-flex items-center gap-3 px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
   >
     <HugeIcon client:load name="android" className="w-6 h-6 text-white" size={24} />
-    <span>Download for Android</span>
-  </a>
+    <span id="android-download-text">Download for Android</span>
+  </button>
 </div>
+
+<script>
+  // Check if Android APK exists before allowing download
+  (async function() {
+    const androidBtn = document.getElementById('android-download-btn') as HTMLButtonElement;
+    const androidText = document.getElementById('android-download-text');
+    
+    if (!androidBtn || !androidText) return;
+    
+    try {
+      // Check if APK file exists by making a HEAD request
+      const response = await fetch('/downloads/baguiostride.apk', { method: 'HEAD' });
+      
+      if (response.ok && response.headers.get('content-length') && parseInt(response.headers.get('content-length') || '0') > 100000) {
+        // File exists and is large enough (more than 100KB), convert button to link
+        const link = document.createElement('a');
+        link.href = '/downloads/baguiostride.apk';
+        link.download = 'baguiostride.apk';
+        link.className = androidBtn.className;
+        link.innerHTML = androidBtn.innerHTML;
+        androidBtn.replaceWith(link);
+      } else {
+        // File doesn't exist or is too small, show coming soon message
+        androidBtn.disabled = true;
+        androidText.textContent = 'Android Build Coming Soon';
+        androidBtn.title = 'Android APK is currently being built. Please check back soon!';
+      }
+    } catch (error) {
+      // File doesn't exist, show coming soon message
+      androidBtn.disabled = true;
+      androidText.textContent = 'Android Build Coming Soon';
+      androidBtn.title = 'Android APK is currently being built. Please check back soon!';
+    }
+  })();
+</script>
