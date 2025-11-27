@@ -18,9 +18,11 @@ interface IconProps {
 const iconMap: Record<string, React.ComponentType<IconProps>> = {
   'message-circle': Icons.Chat01Icon,
   mic: Icons.Microphone01Icon,
+  'ai-voice': Icons.AiVoiceIcon,
   'map-pin': Icons.Location01Icon,
   route: Icons.RouteIcon,
   sparkles: Icons.Magic01Icon,
+  'magic-wand': Icons.MagicWandIcon,
   calculator: Icons.Calculator01Icon,
 };
 

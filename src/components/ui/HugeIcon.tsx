@@ -27,16 +27,22 @@ const iconMap: Record<string, React.ComponentType<IconProps>> = {
   menu: Icons.Menu01Icon,
   close: Icons.Close01Icon,
   check: Icons.CheckmarkCircle01Icon,
+  // Platform icons
+  ios: Icons.AppleIcon,
+  android: Icons.AndroidIcon,
   // Features
   'message-circle': Icons.Chat01Icon,
   mic: Icons.Microphone01Icon,
+  'ai-voice': Icons.AiVoiceIcon,
   'map-pin': Icons.Location01Icon,
   route: Icons.RouteIcon,
   sparkles: Icons.Magic01Icon,
+  'magic-wand': Icons.MagicWandIcon,
   calculator: Icons.Calculator01Icon,
   // Problem statement
   'route-confused': Icons.RouteIcon,
   language: Icons.Translate01Icon,
+  conversation: Icons.ConversationIcon,
   clock: Icons.Clock01Icon,
 };
 

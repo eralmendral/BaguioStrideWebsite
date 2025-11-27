@@ -1,16 +1,15 @@
 ---
+import HugeIcon from './HugeIcon';
 ---
 
 <div class="flex flex-wrap justify-center lg:justify-start gap-4">
   <!-- iOS Download Button -->
   <a 
-    href="/downloads/baguiostride.dmg" 
+    href="/downloads/baguiostride.ipa" 
     download
-    class="inline-flex items-center gap-3 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl"
+    class="inline-flex items-center gap-3 px-6 py-3 bg-green-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl"
   >
-    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c1.28-2.34 3.55-3.82 5.86-3.85 1.3-.03 2.52.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-    </svg>
+    <HugeIcon client:load name="ios" className="w-6 h-6 text-white" size={24} />
     <span>Download for iOS</span>
   </a>
   
@@ -18,11 +17,9 @@
   <a 
     href="/downloads/baguiostride.apk" 
     download
-    class="inline-flex items-center gap-3 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl"
+    class="inline-flex items-center gap-3 px-6 py-3 bg-orange-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl"
   >
-    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997 0-.5511.4482-.9993.9993-.9993.5506 0 .9988.4482.9988.9993 0 .5511-.4482.9997-.9988.9997m-11.9455 0c-.5511 0-.9993-.4486-.9993-.9997 0-.5511.4482-.9993.9993-.9993.5506 0 .9988.4482.9988.9993 0 .5511-.4482.9997-.9988.9997m11.4045-3.2908c0 .2768-.2237.5005-.5005.5005H7.1223c-.2768 0-.5005-.2237-.5005-.5005 0-.2768.2237-.5005.5005-.5005h9.7595c.2768 0 .5005.2237.5005.5005M5.5202 2.1188c-.2768 0-.5005.2237-.5005.5005v18.9624c0 .2768.2237.5005.5005.5005h12.9616c.2768 0 .5005-.2237.5005-.5005V2.6193c0-.2768-.2237-.5005-.5005-.5005H5.5202m12.9616 20.4634H5.5202c-.5511 0-.9993-.4482-.9993-.9993V2.6193c0-.5511.4482-.9993.9993-.9993h12.9616c.5511 0 .9993.4482.9993.9993v18.9636c0 .5511-.4482.9993-.9993.9993"/>
-    </svg>
+    <HugeIcon client:load name="android" className="w-6 h-6 text-white" size={24} />
     <span>Download for Android</span>
   </a>
 </div>

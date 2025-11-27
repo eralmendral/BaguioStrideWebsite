@@ -7,7 +7,7 @@
     "color": "primary"
   },
   {
-    "icon": "mic",
+    "icon": "ai-voice",
     "title": "Voice Search",
     "subtitle": "Hands-Free Navigation",
     "description": "Speak your destination in English or Tagalog. Perfect when you're on the move.",
@@ -28,7 +28,7 @@
     "color": "primary"
   },
   {
-    "icon": "sparkles",
+    "icon": "magic-wand",
     "title": "Smart Recommendations",
     "subtitle": "Discover Hidden Gems",
     "description": "Get personalized tourist spot suggestions along your route.",
