@@ -25,7 +25,8 @@ import HugeIcon from '../ui/HugeIcon';
           <!-- iOS Download Button -->
           <a 
             href="/downloads/baguiostride.ipa" 
-            download
+            download="baguiostride.ipa"
+            type="application/octet-stream"
             class="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
           >
             <HugeIcon client:load name="ios" className="w-4 h-4 sm:w-5 sm:h-5 text-white" size={20} />
@@ -36,6 +37,7 @@ import HugeIcon from '../ui/HugeIcon';
           <a 
             href="/downloads/baguiostride.apk" 
             download="baguiostride.apk"
+            type="application/vnd.android.package-archive"
             class="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-xs sm:text-sm font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
           >
             <HugeIcon client:load name="android" className="w-4 h-4 sm:w-5 sm:h-5 text-white" size={20} />

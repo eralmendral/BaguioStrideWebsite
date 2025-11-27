@@ -36,9 +36,11 @@ pnpm-debug.log*
 
 .vercel
 
-# Large build artifacts (tracked with Git LFS)
-# APK and IPA files are tracked with Git LFS
+# Large build artifacts
+# APK and IPA files are now tracked (under 100MB limit)
+# Only exclude very large files
 public/downloads/*.dmg
+public/images/AppPreview.gif
 
 # Gradle cache and build directories
 .gradle/

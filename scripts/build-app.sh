@@ -103,7 +103,9 @@ build_android() {
     fi
     
     # Build command with Mapbox token if available
-    BUILD_CMD="flutter build apk --release"
+    # Use --split-per-abi to create smaller APKs (under 100MB limit)
+    # This creates separate APKs for each architecture (arm64-v8a, armeabi-v7a, x86_64)
+    BUILD_CMD="flutter build apk --release --split-per-abi"
     if [ -n "$MAPBOX_TOKEN" ]; then
         BUILD_CMD="$BUILD_CMD --dart-define=MAPBOX_ACCESS_TOKEN=$MAPBOX_TOKEN"
         echo -e "${GREEN}✓ Mapbox token found, will be included in build${NC}"
@@ -112,14 +114,19 @@ build_android() {
         echo -e "${YELLOW}   Set MAPBOX_ACCESS_TOKEN environment variable or create ~/.mapbox file${NC}"
     fi
     
-    echo -e "${YELLOW}🔨 Building release APK...${NC}"
+    echo -e "${YELLOW}🔨 Building release APK (split per ABI to keep under 100MB)...${NC}"
     eval "$BUILD_CMD"
     
-    # Copy APK to downloads folder
-    if [ -f "$APP_DIR/build/app/outputs/flutter-apk/app-release.apk" ]; then
-        cp "$APP_DIR/build/app/outputs/flutter-apk/app-release.apk" "$DOWNLOAD_DIR/baguiostride.apk"
-        echo -e "${GREEN}✅ Android APK copied to $DOWNLOAD_DIR/baguiostride.apk${NC}"
+    # Copy arm64-v8a APK (most common architecture for modern Android devices)
+    # This APK is typically 30-40MB, well under the 100MB limit
+    if [ -f "$APP_DIR/build/app/outputs/flutter-apk/app-arm64-v8a-release.apk" ]; then
+        cp "$APP_DIR/build/app/outputs/flutter-apk/app-arm64-v8a-release.apk" "$DOWNLOAD_DIR/baguiostride.apk"
+        APK_SIZE=$(ls -lh "$DOWNLOAD_DIR/baguiostride.apk" | awk '{print $5}')
+        echo -e "${GREEN}✅ Android APK (arm64-v8a) copied to $DOWNLOAD_DIR/baguiostride.apk${NC}"
+        echo -e "${GREEN}   Size: $APK_SIZE (under 100MB limit)${NC}"
         echo -e "${GREEN}   The APK is signed and ready for installation${NC}"
+        echo -e "${YELLOW}   Note: This APK supports arm64-v8a devices (most modern Android phones)${NC}"
+        echo -e "${YELLOW}   For other architectures, use the other APK files from build directory${NC}"
     else
         echo -e "${RED}❌ APK file not found${NC}"
         return 1

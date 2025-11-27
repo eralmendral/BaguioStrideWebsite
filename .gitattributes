@@ -1,2 +1,1 @@
-public/downloads/*.apk filter=lfs diff=lfs merge=lfs -text
-public/downloads/*.ipa filter=lfs diff=lfs merge=lfs -text
+# Large files moved to GitHub Releases - see README for download links
