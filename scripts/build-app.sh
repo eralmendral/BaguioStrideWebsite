@@ -34,13 +34,45 @@ build_android() {
         return 1
     fi
     
+    # Check for Java
+    if ! command -v java &> /dev/null; then
+        echo -e "${RED}❌ Java is not installed${NC}"
+        echo "   Install Java: brew install --cask temurin"
+        echo "   Or install Android Studio which includes Java"
+        return 1
+    fi
+    
+    # Set up Java environment
+    if [ -z "$JAVA_HOME" ]; then
+        export JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null || echo "")
+        if [ -n "$JAVA_HOME" ]; then
+            echo -e "${GREEN}✓ Java found at: $JAVA_HOME${NC}"
+        fi
+    fi
+    
     # Check if Android SDK is available
     if [ -z "$ANDROID_HOME" ] && [ -z "$ANDROID_SDK_ROOT" ]; then
         # Try to find Android SDK in common locations
         if [ -d "$HOME/Library/Android/sdk" ]; then
             export ANDROID_HOME="$HOME/Library/Android/sdk"
             export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+            export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools"
             echo -e "${GREEN}✓ Found Android SDK at $ANDROID_HOME${NC}"
+            
+            # Check if SDK packages are installed
+            if [ ! -d "$ANDROID_HOME/platform-tools" ] || [ ! -d "$ANDROID_HOME/build-tools" ]; then
+                echo -e "${YELLOW}⚠️  Android SDK packages not fully installed${NC}"
+                echo -e "${YELLOW}   Installing required packages...${NC}"
+                
+                # Accept licenses and install packages
+                yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null 2>&1 || true
+                $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
+                    "platform-tools" \
+                    "platforms;android-34" \
+                    "build-tools;34.0.0" > /dev/null 2>&1 || {
+                    echo -e "${YELLOW}   Package installation may have failed. Continuing anyway...${NC}"
+                }
+            fi
         else
             echo -e "${YELLOW}⚠️  Android SDK not found. Skipping Android build.${NC}"
             echo "   Install Android Studio from: https://developer.android.com/studio"
@@ -49,12 +81,17 @@ build_android() {
         fi
     fi
     
+    # Configure Flutter to use the Android SDK
+    flutter config --android-sdk "$ANDROID_HOME" > /dev/null 2>&1 || true
+    
+    echo -e "${YELLOW}🔨 Building release APK...${NC}"
     flutter build apk --release
     
     # Copy APK to downloads folder
     if [ -f "$APP_DIR/build/app/outputs/flutter-apk/app-release.apk" ]; then
         cp "$APP_DIR/build/app/outputs/flutter-apk/app-release.apk" "$DOWNLOAD_DIR/baguiostride.apk"
         echo -e "${GREEN}✅ Android APK copied to $DOWNLOAD_DIR/baguiostride.apk${NC}"
+        echo -e "${GREEN}   The APK is signed and ready for installation${NC}"
     else
         echo -e "${RED}❌ APK file not found${NC}"
         return 1

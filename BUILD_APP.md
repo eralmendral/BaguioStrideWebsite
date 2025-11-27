@@ -4,6 +4,19 @@ This document explains how to build the BaguioStride app and make it available f
 
 ## Quick Start
 
+### First Time Setup (Android)
+
+If you haven't set up Android SDK yet, run the setup script first:
+
+```bash
+cd BaguioStride-Website
+./scripts/setup-android-sdk.sh
+```
+
+This will install Java and Android SDK automatically. You'll need to enter your password when prompted.
+
+### Building Apps
+
 To build both iOS and Android versions and copy them to the website:
 
 ```bash
@@ -21,9 +34,10 @@ cd BaguioStride-Website
 
 ### For Android Build
 - Flutter SDK installed and in PATH
-- Android SDK installed (via Android Studio or standalone)
+- Java Development Kit (JDK) - Install via: `brew install --cask temurin`
+- Android SDK installed - Run setup script: `./scripts/setup-android-sdk.sh`
+- Or install Android Studio from: https://developer.android.com/studio
 - `ANDROID_HOME` or `ANDROID_SDK_ROOT` environment variable set (or SDK in `~/Library/Android/sdk`)
-- Java Development Kit (JDK)
 
 ## Build Process
 
@@ -97,10 +111,13 @@ cp build/app/outputs/flutter-apk/app-release.apk \
   - Accept any Apple Developer agreements if prompted
 
 ### Android Build Fails
-- Install Android Studio from: https://developer.android.com/studio
+- **Java not found**: Install Java via `brew install --cask temurin` (requires password)
+- **Android SDK not found**: Run the setup script: `./scripts/setup-android-sdk.sh`
+- Or install Android Studio from: https://developer.android.com/studio
 - The script will auto-detect SDK in `~/Library/Android/sdk`, or set `ANDROID_HOME` manually
 - Run `flutter doctor` to check Android setup
-- Ensure Android SDK platform tools are installed via Android Studio SDK Manager
+- Ensure Android SDK platform tools are installed
+- After setup, restart your terminal or run: `source ~/.zshrc` (or `~/.bash_profile`)
 
 ### IPA Creation Fails
 - Ensure the iOS build completed successfully

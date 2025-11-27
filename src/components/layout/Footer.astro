@@ -53,10 +53,10 @@ import HugeIcon from '../ui/HugeIcon';
 <script>
   // Check if Android APK exists before allowing download
   (async function() {
-    const androidBtn = document.getElementById('footer-android-download-btn') as HTMLButtonElement;
+    const androidBtn = document.getElementById('footer-android-download-btn');
     const androidText = document.getElementById('footer-android-download-text');
     
-    if (!androidBtn || !androidText) return;
+    if (!androidBtn || !androidText || !(androidBtn instanceof HTMLButtonElement)) return;
     
     try {
       // Check if APK file exists by making a HEAD request

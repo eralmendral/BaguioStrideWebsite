@@ -35,3 +35,10 @@ pnpm-debug.log*
 .biome/
 
 .vercel
+
+# Large build artifacts (exceed GitHub 100MB limit)
+public/downloads/*.apk
+public/downloads/*.ipa
+public/downloads/*.dmg
+public/downloads/*.apk
+public/downloads/*.ipa
