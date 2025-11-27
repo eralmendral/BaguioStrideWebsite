@@ -36,9 +36,16 @@ pnpm-debug.log*
 
 .vercel
 
-# Large build artifacts (exceed GitHub 100MB limit)
-public/downloads/*.apk
-public/downloads/*.ipa
+# Large build artifacts (tracked with Git LFS)
+# APK and IPA files are tracked with Git LFS
 public/downloads/*.dmg
-public/downloads/*.apk
-public/downloads/*.ipa
+
+# Gradle cache and build directories
+.gradle/
+~/.gradle/
+android/.gradle/
+android/build/
+android/app/build/
+
+# Shell scripts (build scripts)
+*.sh
