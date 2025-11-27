@@ -77,47 +77,49 @@ build_ios() {
         return 1
     fi
     
-    # Build iOS app
-    flutter build ios --release --no-codesign
+    # Build signed IPA using ad-hoc distribution (for direct device installation)
+    echo -e "${YELLOW}🔐 Building signed IPA with ad-hoc distribution...${NC}"
+    echo -e "${YELLOW}   Note: This requires a valid Apple Developer account${NC}"
+    echo -e "${YELLOW}   Ad-hoc distribution allows installation on registered devices${NC}"
+    
+    # Try ad-hoc distribution first (works with free Apple ID for development)
+    flutter build ipa --release --export-method=ad-hoc || {
+        echo -e "${YELLOW}⚠️  Ad-hoc export failed, trying development method...${NC}"
+        flutter build ipa --release --export-method=development || {
+            echo -e "${RED}❌ IPA export failed${NC}"
+            echo -e "${YELLOW}   Archive was created. You can export manually:${NC}"
+            echo -e "${YELLOW}   1. Open Xcode${NC}"
+            echo -e "${YELLOW}   2. Window > Organizer${NC}"
+            echo -e "${YELLOW}   3. Select the archive and click 'Distribute App'${NC}"
+            echo -e "${YELLOW}   4. Choose 'Ad Hoc' or 'Development' distribution${NC}"
+            return 1
+        }
+    }
     
     # Check if build was successful
-    if [ ! -d "$APP_DIR/build/ios/iphoneos" ]; then
-        echo -e "${RED}❌ iOS build directory not found${NC}"
-        return 1
-    fi
-    
-    APP_NAME="Runner"
-    APP_BUNDLE="$APP_DIR/build/ios/iphoneos/$APP_NAME.app"
+    # Flutter creates IPA at build/ios/ipa/<app-name>.ipa
+    APP_NAME="baguio_stride_app"
+    IPA_BUILD_PATH="$APP_DIR/build/ios/ipa/$APP_NAME.ipa"
     IPA_PATH="$DOWNLOAD_DIR/baguiostride.ipa"
     
-    if [ ! -d "$APP_BUNDLE" ]; then
-        echo -e "${RED}❌ App bundle not found at $APP_BUNDLE${NC}"
+    if [ ! -f "$IPA_BUILD_PATH" ]; then
+        echo -e "${RED}❌ IPA file not found at $IPA_BUILD_PATH${NC}"
+        echo -e "${YELLOW}   This may indicate a code signing issue. Check:${NC}"
+        echo -e "${YELLOW}   1. Xcode is signed in with your Apple ID${NC}"
+        echo -e "${YELLOW}   2. Development Team is configured in Xcode${NC}"
+        echo -e "${YELLOW}   3. Signing certificates are installed${NC}"
+        echo -e "${YELLOW}   4. For ad-hoc: Device UDIDs are registered in your Apple Developer account${NC}"
         return 1
     fi
     
-    # Create IPA file
-    echo -e "${YELLOW}📦 Creating IPA file...${NC}"
-    
-    # Create Payload directory
-    TEMP_IPA_DIR=$(mktemp -d)
-    PAYLOAD_DIR="$TEMP_IPA_DIR/Payload"
-    mkdir -p "$PAYLOAD_DIR"
-    
-    # Copy app bundle to Payload
-    cp -R "$APP_BUNDLE" "$PAYLOAD_DIR/"
-    
-    # Create IPA using zip
-    cd "$TEMP_IPA_DIR"
-    zip -r "$IPA_PATH" Payload > /dev/null
-    
-    # Clean up
-    rm -rf "$TEMP_IPA_DIR"
+    # Copy IPA to downloads folder
+    cp "$IPA_BUILD_PATH" "$IPA_PATH"
     
     if [ -f "$IPA_PATH" ]; then
-        echo -e "${GREEN}✅ iOS IPA created at $IPA_PATH${NC}"
-        echo -e "${YELLOW}⚠️  Note: This IPA is unsigned and may require manual signing for installation${NC}"
+        echo -e "${GREEN}✅ Signed iOS IPA created at $IPA_PATH${NC}"
+        echo -e "${GREEN}   The IPA is code-signed and ready for installation${NC}"
     else
-        echo -e "${RED}❌ IPA creation failed${NC}"
+        echo -e "${RED}❌ Failed to copy IPA to downloads folder${NC}"
         return 1
     fi
 }

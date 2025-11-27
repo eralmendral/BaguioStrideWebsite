@@ -54,17 +54,11 @@ If you prefer to build manually:
 ### iOS Build
 ```bash
 cd BaguioStride-App
-flutter build ios --release --no-codesign
+flutter build ipa --release
 
-# Create IPA
-APP_BUNDLE="build/ios/iphoneos/Runner.app"
-TEMP_DIR=$(mktemp -d)
-PAYLOAD_DIR="$TEMP_DIR/Payload"
-mkdir -p "$PAYLOAD_DIR"
-cp -R "$APP_BUNDLE" "$PAYLOAD_DIR/"
-cd "$TEMP_DIR"
-zip -r "../BaguioStride-Website/public/downloads/baguiostride.ipa" Payload
-rm -rf "$TEMP_DIR"
+# Copy IPA to downloads folder
+cp build/ios/ipa/baguio_stride_app.ipa \
+  ../BaguioStride-Website/public/downloads/baguiostride.ipa
 ```
 
 ### Android Build
@@ -77,7 +71,12 @@ cp build/app/outputs/flutter-apk/app-release.apk \
 
 ## Notes
 
-- iOS builds are created without code signing (`--no-codesign`). For distribution, you'll need to sign the IPA or use TestFlight/App Store.
+- iOS builds are created with code signing using `flutter build ipa --release`. This requires:
+  - A valid Apple Developer account (paid membership)
+  - Xcode signed in with your Apple ID
+  - Development Team configured in Xcode project
+  - Valid signing certificates installed
+  - The signed IPA can be installed directly on iOS devices (with proper provisioning)
 - The build script will automatically detect Android SDK in `~/Library/Android/sdk` if `ANDROID_HOME` is not set.
 - The build script will skip Android build if Android SDK is not found.
 - Build files should be committed to the repository or uploaded separately for deployment.
@@ -89,6 +88,13 @@ cp build/app/outputs/flutter-apk/app-release.apk \
 - Check that CocoaPods is installed: `pod --version`
 - Verify Flutter is properly configured: `flutter doctor`
 - Ensure you're building on macOS (iOS builds require macOS)
+- **Code Signing Issues:**
+  - Open `ios/Runner.xcworkspace` in Xcode
+  - Go to Runner target > Signing & Capabilities
+  - Ensure "Automatically manage signing" is checked
+  - Verify your Development Team is selected
+  - Sign in to Xcode with your Apple ID: Xcode > Preferences > Accounts
+  - Accept any Apple Developer agreements if prompted
 
 ### Android Build Fails
 - Install Android Studio from: https://developer.android.com/studio
