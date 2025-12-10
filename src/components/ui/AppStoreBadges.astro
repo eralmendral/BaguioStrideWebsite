@@ -1,17 +1,44 @@
 ---
 import HugeIcon from './HugeIcon';
+
+interface Props {
+  align?: 'center' | 'start' | 'mixed' | 'footer';
+  compact?: boolean;
+}
+
+const { align = 'mixed', compact = false } = Astro.props;
+
+const alignmentClasses = {
+  center: 'justify-center',
+  start: 'justify-start',
+  mixed: 'justify-center lg:justify-start',
+  footer: 'justify-center sm:justify-start'
+};
+
+const buttonClasses = compact 
+  ? "px-3 sm:px-4 py-2 text-xs sm:text-sm" 
+  : "px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base";
+
+const iconSize = compact ? 20 : 24;
+const iconClass = compact ? "w-4 h-4 sm:w-5 sm:h-5" : "w-5 h-5 sm:w-6 sm:h-6";
 ---
 
-<div class="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-3 sm:gap-4">
+<div class:list={[
+  "flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4",
+  alignmentClasses[align]
+]}>
   <!-- iOS Download Button -->
   <a 
     href="/downloads/baguiostride.ipa" 
     download="baguiostride.ipa"
     type="application/octet-stream"
-    class="inline-flex items-center justify-center gap-2 sm:gap-3 px-5 sm:px-6 py-2.5 sm:py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl text-sm sm:text-base w-full sm:w-auto"
+    class:list={[
+      "inline-flex items-center justify-center gap-2 sm:gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl w-full sm:w-auto",
+      buttonClasses
+    ]}
   >
-    <HugeIcon client:load name="ios" className="w-5 h-5 sm:w-6 sm:h-6 text-white" size={24} />
-    <span>Download for iOS</span>
+    <HugeIcon client:load name="ios" className={`${iconClass} text-white`} size={iconSize} />
+    <span>{compact ? 'iOS' : 'Download for iOS'}</span>
   </a>
   
   <!-- Android Download Button -->
@@ -19,9 +46,12 @@ import HugeIcon from './HugeIcon';
     href="/downloads/baguiostride.apk" 
     download="baguiostride.apk"
     type="application/vnd.android.package-archive"
-    class="inline-flex items-center justify-center gap-2 sm:gap-3 px-5 sm:px-6 py-2.5 sm:py-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl text-sm sm:text-base w-full sm:w-auto"
+    class:list={[
+      "inline-flex items-center justify-center gap-2 sm:gap-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl w-full sm:w-auto",
+      buttonClasses
+    ]}
   >
-    <HugeIcon client:load name="android" className="w-5 h-5 sm:w-6 sm:h-6 text-white" size={24} />
-    <span>Download for Android</span>
+    <HugeIcon client:load name="android" className={`${iconClass} text-white`} size={iconSize} />
+    <span>{compact ? 'Android' : 'Download for Android'}</span>
   </a>
 </div>

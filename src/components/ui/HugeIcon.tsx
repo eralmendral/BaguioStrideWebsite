@@ -55,19 +55,19 @@ export default function HugeIcon({
   const IconComponent = iconMap[name];
 
   if (!IconComponent) {
-    console.warn(`Icon "${name}" not found in iconMap. Available icons:`, Object.keys(iconMap));
+    // console.warn(`Icon "${name}" not found in iconMap. Available icons:`, Object.keys(iconMap));
     return null;
   }
 
   // Ensure IconComponent is valid before passing to HugeiconsIcon
   if (typeof IconComponent === 'undefined' || IconComponent === null) {
-    console.warn(`Icon "${name}" is undefined or null`);
+    // console.warn(`Icon "${name}" is undefined or null`);
     return null;
   }
 
   // Check if IconComponent is a valid React component/function
   if (typeof IconComponent !== 'function' && typeof IconComponent !== 'object') {
-    console.warn(`Icon "${name}" is not a valid component. Type:`, typeof IconComponent);
+    // console.warn(`Icon "${name}" is not a valid component. Type:`, typeof IconComponent);
     return null;
   }
 

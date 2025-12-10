@@ -1,4 +1,5 @@
 ---
+import AppStoreBadges from '../ui/AppStoreBadges.astro';
 import HugeIcon from '../ui/HugeIcon';
 ---
 
@@ -21,29 +22,7 @@ import HugeIcon from '../ui/HugeIcon';
       <!-- Download -->
       <div class="text-center sm:text-left">
         <h3 class="text-white font-semibold mb-3 sm:mb-4 text-base sm:text-lg">Download</h3>
-        <div class="flex flex-wrap justify-center sm:justify-start gap-2 sm:gap-3">
-          <!-- iOS Download Button -->
-          <a 
-            href="/downloads/baguiostride.ipa" 
-            download="baguiostride.ipa"
-            type="application/octet-stream"
-            class="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
-          >
-            <HugeIcon client:load name="ios" className="w-4 h-4 sm:w-5 sm:h-5 text-white" size={20} />
-            <span>iOS</span>
-          </a>
-          
-          <!-- Android Download Button -->
-          <a 
-            href="/downloads/baguiostride.apk" 
-            download="baguiostride.apk"
-            type="application/vnd.android.package-archive"
-            class="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-xs sm:text-sm font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
-          >
-            <HugeIcon client:load name="android" className="w-4 h-4 sm:w-5 sm:h-5 text-white" size={20} />
-            <span>Android</span>
-          </a>
-        </div>
+        <AppStoreBadges align="footer" compact={true} />
       </div>
     </div>
     
@@ -52,4 +31,3 @@ import HugeIcon from '../ui/HugeIcon';
     </div>
   </div>
 </footer>
-

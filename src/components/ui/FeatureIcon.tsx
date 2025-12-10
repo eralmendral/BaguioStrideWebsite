@@ -30,13 +30,13 @@ export default function FeatureIcon({ icon, className = 'w-full h-full' }: Featu
   const IconComponent = iconMap[icon];
 
   if (!IconComponent) {
-    console.warn(`Icon "${icon}" not found in iconMap`);
+    // console.warn(`Icon "${icon}" not found in iconMap`);
     return null;
   }
 
   // Ensure IconComponent is valid before passing to HugeiconsIcon
   if (typeof IconComponent === 'undefined' || IconComponent === null) {
-    console.warn(`Icon "${icon}" is undefined or null`);
+    // console.warn(`Icon "${icon}" is undefined or null`);
     return null;
   }
 

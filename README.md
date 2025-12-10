@@ -1,46 +1,34 @@
 # BaguioStride Marketing Website
 
-A modern, conversion-focused homepage for BaguioStride, a mobile app that provides AI-powered jeepney route guidance for Baguio City, Philippines.
+A modern, conversion-focused homepage for **BaguioStride**, a mobile app that provides AI-powered jeepney route guidance for Baguio City, Philippines.
 
-## Tech Stack
+## 🛠 Tech Stack
 
-- **Framework**: Astro 4.x
-- **Styling**: TailwindCSS v3.x + DaisyUI
-- **Components**: Astro components with React islands for interactive elements
-- **Fonts**: Lexend (self-hosted)
-- **Icons**: HugeIcons Pro
-- **Animations**: CSS animations and Intersection Observer for scroll animations
+### Core
+- **Framework**: [Astro 5](https://astro.build/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **UI Library**: [React](https://react.dev/) (for interactive islands)
 
-## Getting Started
+### Styling & UI
+- **Styling**: [TailwindCSS](https://tailwindcss.com/)
+- **Component Library**: [DaisyUI](https://daisyui.com/)
+- **Fonts**: [Lexend](https://fonts.google.com/specimen/Lexend) (self-hosted)
+- **Icons**: [HugeIcons Pro](https://hugeicons.com/)
 
-### Prerequisites
+### Tooling
+- **Linter/Formatter**: [BiomeJS](https://biomejs.dev/)
+- **Package Manager**: npm
 
-- Node.js 18+ 
-- npm, yarn, or pnpm
-- HugeIcons Pro license (see [HUGEICONS_SETUP.md](./HUGEICONS_SETUP.md))
+## ✨ Features
 
-### Installation
+- ✅ Responsive design (mobile-first)
+- ✅ Modern UI with TailwindCSS and DaisyUI
+- ✅ Smooth scroll animations
+- ✅ Mobile-friendly navigation
+- ✅ SEO optimized
+- ✅ Fast performance with Astro
 
-1. **Set up HugeIcons Pro** (required):
-   - See [HUGEICONS_SETUP.md](./HUGEICONS_SETUP.md) for detailed instructions
-   - Add your Universal License Key to `.npmrc`
-
-2. **Install dependencies**:
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-```
-
-## Project Structure
+## 📂 Project Structure
 
 ```
 website/
@@ -57,34 +45,6 @@ website/
 └── astro.config.mjs      # Astro configuration
 ```
 
-## Features
+## 🤝 Contributing
 
-- ✅ Responsive design (mobile-first)
-- ✅ Modern UI with TailwindCSS and DaisyUI
-- ✅ Smooth scroll animations
-- ✅ Mobile-friendly navigation
-- ✅ SEO optimized
-- ✅ Fast performance with Astro
-
-## Development
-
-The site is built with Astro, which provides excellent performance by shipping minimal JavaScript. Interactive components use React islands for client-side interactivity.
-
-### Code Quality
-
-This project uses [BiomeJS](https://biomejs.dev/) for linting and formatting.
-
-**Available scripts:**
-- `npm run lint` - Check for linting errors
-- `npm run lint:fix` - Fix linting errors automatically
-- `npm run format` - Format code
-- `npm run format:check` - Check code formatting
-- `npm run check` - Run both linting and formatting checks
-- `npm run check:fix` - Fix both linting and formatting issues
-
-**Before committing:**
-```bash
-npm run check:fix
-```
-
-
+For development setup and contribution guidelines, please refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
