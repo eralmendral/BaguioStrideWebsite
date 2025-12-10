@@ -1,7 +1,0 @@
-# HugeIcons Pro Authentication
-# This is a template file - DO NOT commit your actual .npmrc with the license key
-# For local development, copy this file to .npmrc and replace UNIVERSAL_LICENSE_KEY
-# For Vercel deployment, use the HUGEICONS_LICENSE_KEY environment variable
-
-@hugeicons-pro:registry=https://npm.hugeicons.com/
-//npm.hugeicons.com/:_authToken=UNIVERSAL_LICENSE_KEY
