@@ -87,7 +87,4 @@ This project uses [BiomeJS](https://biomejs.dev/) for linting and formatting.
 npm run check:fix
 ```
 
-## License
-
-MIT
 
