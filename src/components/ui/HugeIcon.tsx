@@ -1,7 +1,5 @@
-import * as Icons from '@hugeicons-pro/core-stroke-rounded';
+import * as Icons from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
-import React from 'react';
-
 interface HugeIconProps {
   name: string;
   className?: string;
@@ -9,39 +7,31 @@ interface HugeIconProps {
   strokeWidth?: number;
 }
 
-// Define the props that HugeIcons Pro icons accept
-interface IconProps {
-  className?: string;
-  size?: number;
-  strokeWidth?: number;
-}
-
-// Map icon names to HugeIcons Pro icons
-// Note: Icon names must match the exact export names from @hugeicons-pro/core-stroke-rounded
-const iconMap: Record<string, React.ComponentType<IconProps>> = {
+// Map icon names to HugeIcons Free icons
+const iconMap: Record<string, any> = {
   // Navigation & UI
-  users: Icons.Users01Icon,
-  star: Icons.Star01Icon,
-  globe: Icons.Globe01Icon,
+  users: Icons.UserGroupIcon,
+  star: Icons.StarIcon,
+  globe: Icons.Globe02Icon,
   'arrow-down': Icons.ArrowDown01Icon,
   menu: Icons.Menu01Icon,
-  close: Icons.Close01Icon,
+  close: Icons.Cancel01Icon,
   check: Icons.CheckmarkCircle01Icon,
   // Platform icons
   ios: Icons.AppleIcon,
   android: Icons.AndroidIcon,
   // Features
   'message-circle': Icons.Chat01Icon,
-  mic: Icons.Microphone01Icon,
+  mic: Icons.Mic01Icon,
   'ai-voice': Icons.AiVoiceIcon,
   'map-pin': Icons.Location01Icon,
   route: Icons.RouteIcon,
-  sparkles: Icons.Magic01Icon,
-  'magic-wand': Icons.MagicWandIcon,
+  sparkles: Icons.SparklesIcon,
+  'magic-wand': Icons.MagicWand01Icon,
   calculator: Icons.Calculator01Icon,
   // Problem statement
   'route-confused': Icons.RouteIcon,
-  language: Icons.Translate01Icon,
+  language: Icons.TranslateIcon,
   conversation: Icons.ConversationIcon,
   clock: Icons.Clock01Icon,
 };
@@ -62,12 +52,6 @@ export default function HugeIcon({
   // Ensure IconComponent is valid before passing to HugeiconsIcon
   if (typeof IconComponent === 'undefined' || IconComponent === null) {
     // console.warn(`Icon "${name}" is undefined or null`);
-    return null;
-  }
-
-  // Check if IconComponent is a valid React component/function
-  if (typeof IconComponent !== 'function' && typeof IconComponent !== 'object') {
-    // console.warn(`Icon "${name}" is not a valid component. Type:`, typeof IconComponent);
     return null;
   }
 

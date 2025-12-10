@@ -1,4 +1,4 @@
-import * as Icons from '@hugeicons-pro/core-stroke-rounded';
+import * as Icons from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 
 interface StarRatingProps {
@@ -9,8 +9,8 @@ interface StarRatingProps {
 
 export default function StarRating({ rating, className = '', size = 20 }: StarRatingProps) {
   // Ensure the icon is available
-  if (!Icons.Star01Icon) {
-    console.warn('Star01Icon not found in Icons');
+  if (!Icons.StarIcon) {
+    console.warn('StarIcon not found in Icons');
     return null;
   }
 
@@ -20,7 +20,7 @@ export default function StarRating({ rating, className = '', size = 20 }: StarRa
         {Array.from({ length: 5 }, (_, i) => i + 1).map((starIndex) => (
           <HugeiconsIcon
             key={`star-${starIndex}`}
-            icon={Icons.Star01Icon}
+            icon={Icons.StarIcon}
             className={starIndex <= rating ? 'text-yellow-400' : 'text-gray-300'}
             size={size}
             strokeWidth={starIndex <= rating ? 2 : 1}

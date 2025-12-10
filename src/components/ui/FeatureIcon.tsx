@@ -1,28 +1,19 @@
-import * as Icons from '@hugeicons-pro/core-stroke-rounded';
+import * as Icons from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
-import React from 'react';
-
 interface FeatureIconProps {
   icon: string;
   className?: string;
 }
 
-// Define the props that HugeIcons Pro icons accept
-interface IconProps {
-  className?: string;
-  size?: number;
-  strokeWidth?: number;
-}
-
-// Map our icon names to HugeIcons Pro icon names
-const iconMap: Record<string, React.ComponentType<IconProps>> = {
+// Map our icon names to HugeIcons Free icon names
+const iconMap: Record<string, any> = {
   'message-circle': Icons.Chat01Icon,
-  mic: Icons.Microphone01Icon,
+  mic: Icons.Mic01Icon,
   'ai-voice': Icons.AiVoiceIcon,
   'map-pin': Icons.Location01Icon,
   route: Icons.RouteIcon,
-  sparkles: Icons.Magic01Icon,
-  'magic-wand': Icons.MagicWandIcon,
+  sparkles: Icons.SparklesIcon,
+  'magic-wand': Icons.MagicWand01Icon,
   calculator: Icons.Calculator01Icon,
 };
 
