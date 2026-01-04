@@ -1,22 +1,23 @@
 # Contributing to BaguioStride Website
 
-Thank you for your interest in contributing to the BaguioStride Website! This document provides instructions for setting up your development environment.
+Thank you for your interest in contributing to the BaguioStride Website! 
 
 ## Getting Started
 
-### Prerequisites
+For detailed setup instructions, please see [SETUP.md](./setup.md) which includes:
+- Complete prerequisites
+- Step-by-step installation guide
+- Development workflow
+- Troubleshooting tips
 
-- Node.js 18+
-- npm, yarn, or pnpm
-- HugeIcons Pro license
+### Quick Setup
 
-### Installation
-
-1. **Set up HugeIcons Pro** (required):
+1. **Prerequisites**: Node.js 18+, npm, and HugeIcons Pro license
+2. **Set up HugeIcons Pro** (required):
    - You need a valid license key for HugeIcons Pro.
-   - Add your Universal License Key to `.npmrc`.
+   - Add your Universal License Key to `.npmrc` (see [SETUP.md](./setup.md) for details).
 
-2. **Install dependencies**:
+3. **Install dependencies**:
    ```bash
    npm install
    ```

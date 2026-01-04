@@ -45,6 +45,10 @@ website/
 └── astro.config.mjs      # Astro configuration
 ```
 
+## 🚀 Getting Started
+
+For detailed setup instructions, see [SETUP.md](./setup.md).
+
 ## 🤝 Contributing
 
-For development setup and contribution guidelines, please refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
+For development setup and contribution guidelines, please refer to [CONTRIBUTING.md](./CONTRIBUTING.md) and [SETUP.md](./setup.md).
