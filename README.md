@@ -1,5 +1,7 @@
 # BaguioStride Marketing Website
 
+- https://baguio-stride-website.vercel.app/
+
 A modern, conversion-focused homepage for **BaguioStride**, a mobile app that provides AI-powered jeepney route guidance for Baguio City, Philippines.
 
 ## 🛠 Tech Stack
