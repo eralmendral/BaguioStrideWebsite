@@ -12,34 +12,30 @@ const alignmentClasses = {
   center: 'justify-center',
   start: 'justify-start',
   mixed: 'justify-center lg:justify-start',
-  footer: 'justify-center sm:justify-start'
+  footer: 'justify-center sm:justify-start',
 };
 
-const buttonClasses = compact 
-  ? "px-3 sm:px-4 py-2 text-xs sm:text-sm" 
-  : "px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base";
+const buttonClasses = compact
+  ? 'px-3 sm:px-4 py-2 text-xs sm:text-sm'
+  : 'px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base';
 
 const iconSize = compact ? 20 : 24;
-const iconClass = compact ? "w-4 h-4 sm:w-5 sm:h-5" : "w-5 h-5 sm:w-6 sm:h-6";
+const iconClass = compact ? 'w-4 h-4 sm:w-5 sm:h-5' : 'w-5 h-5 sm:w-6 sm:h-6';
 ---
 
 <div class:list={[
   "flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4",
   alignmentClasses[align]
 ]}>
-  <!-- iOS Download Button -->
-  <a 
-    href="/downloads/baguio_stride_app.ipa" 
-    download="baguio_stride_app.ipa"
-    type="application/octet-stream"
+  <span
     class:list={[
-      "inline-flex items-center justify-center gap-2 sm:gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl w-full sm:w-auto",
-      buttonClasses
+      'inline-flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white/90 font-semibold text-gray-700 shadow-sm sm:w-auto sm:gap-3',
+      buttonClasses,
     ]}
   >
-    <HugeIcon client:load name="ios" className={`${iconClass} text-white`} size={iconSize} />
-    <span>{compact ? 'iOS' : 'Download for iOS'}</span>
-  </a>
+    <HugeIcon client:load name="ios" className={`${iconClass} text-gray-700`} size={iconSize} />
+    <span>{compact ? 'iOS soon' : 'iOS coming soon'}</span>
+  </span>
   
   <!-- Android Download Button -->
   <a 
@@ -47,7 +43,7 @@ const iconClass = compact ? "w-4 h-4 sm:w-5 sm:h-5" : "w-5 h-5 sm:w-6 sm:h-6";
     download="baguiostride-arm64-v8a-release.apk"
     type="application/vnd.android.package-archive"
     class:list={[
-      "inline-flex items-center justify-center gap-2 sm:gap-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl w-full sm:w-auto",
+      "inline-flex items-center justify-center gap-2 sm:gap-3 bg-accent hover:bg-accent/90 text-gray-950 font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-lg w-full sm:w-auto",
       buttonClasses
     ]}
   >

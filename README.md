@@ -1,56 +1,79 @@
-# BaguioStride Marketing Website
+# BaguioStride Website
 
-- https://baguio-stride-website.vercel.app/
+Marketing website for **BaguioStride**, an AI-assisted jeepney route guide for Baguio City.
 
-A modern, conversion-focused homepage for **BaguioStride**, a mobile app that provides AI-powered jeepney route guidance for Baguio City, Philippines.
+Live site: https://baguio-stride-website.vercel.app/
 
-## 🛠 Tech Stack
+## Overview
 
-### Core
-- **Framework**: [Astro 5](https://astro.build/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **UI Library**: [React](https://react.dev/) (for interactive islands)
+The site is a static Astro build with a responsive homepage, self-hosted Lexend fonts, app screenshots, and direct Android APK download support. The iOS call to action is currently marked as coming soon because no iOS build artifact is present in `public/downloads`.
 
-### Styling & UI
-- **Styling**: [TailwindCSS](https://tailwindcss.com/)
-- **Component Library**: [DaisyUI](https://daisyui.com/)
-- **Fonts**: [Lexend](https://fonts.google.com/specimen/Lexend) (self-hosted)
-- **Icons**: [HugeIcons Pro](https://hugeicons.com/)
+## Tech Stack
 
-### Tooling
-- **Linter/Formatter**: [BiomeJS](https://biomejs.dev/)
-- **Package Manager**: npm
+- Astro 5
+- TypeScript
+- React islands
+- Tailwind CSS 3
+- DaisyUI
+- HugeIcons
+- Biome for linting and formatting
+- npm for package management
 
-## ✨ Features
+## Project Structure
 
-- ✅ Responsive design (mobile-first)
-- ✅ Modern UI with TailwindCSS and DaisyUI
-- ✅ Smooth scroll animations
-- ✅ Mobile-friendly navigation
-- ✅ SEO optimized
-- ✅ Fast performance with Astro
-
-## 📂 Project Structure
-
-```
-website/
-├── src/
-│   ├── components/
-│   │   ├── layout/       # Header, Footer, MobileMenu
-│   │   ├── home/         # Homepage sections
-│   │   └── ui/           # Reusable UI components
-│   ├── layouts/          # Page layouts
-│   ├── pages/            # Route pages
-│   ├── styles/           # Global styles
-│   └── data/             # JSON data files
-├── public/               # Static assets
-└── astro.config.mjs      # Astro configuration
+```text
+src/
+  components/
+    home/      Homepage sections
+    layout/    Header and footer
+    ui/        Shared UI components
+  layouts/     Page shells
+  pages/       Astro routes
+  styles/      Global styles
+public/
+  downloads/   APK and release files
+  fonts/       Self-hosted Lexend fonts
+  images/      App screenshots and badges
 ```
 
-## 🚀 Getting Started
+## Development
 
-For detailed setup instructions, see [SETUP.md](./setup.md).
+Install dependencies:
 
-## 🤝 Contributing
+```bash
+npm install
+```
 
-For development setup and contribution guidelines, please refer to [CONTRIBUTING.md](./CONTRIBUTING.md) and [SETUP.md](./setup.md).
+Run the local dev server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+## Quality Commands
+
+```bash
+npm run check
+npm run lint
+npm run format:check
+```
+
+Use `npm run check:fix` or `npm run format` for automatic fixes.
+
+## Release Notes
+
+- Android downloads use `public/downloads/baguiostride-arm64-v8a-release.apk`.
+- The homepage uses the screenshots in `public/images`.
+- Deployment details are kept in `Deploy.md` when present.

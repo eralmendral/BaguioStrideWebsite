@@ -1,5 +1,7 @@
 import * as Icons from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
+import type { IconSvgElement } from '@hugeicons/react';
+
 interface HugeIconProps {
   name: string;
   className?: string;
@@ -8,7 +10,7 @@ interface HugeIconProps {
 }
 
 // Map icon names to HugeIcons Free icons
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, IconSvgElement> = {
   // Navigation & UI
   users: Icons.UserGroupIcon,
   star: Icons.StarIcon,

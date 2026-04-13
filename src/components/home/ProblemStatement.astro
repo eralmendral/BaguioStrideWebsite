@@ -2,11 +2,11 @@
 import HugeIcon from '../ui/HugeIcon';
 ---
 
-<section class="py-12 sm:py-16 lg:py-20 bg-gray-50">
+<section class="bg-white py-12 sm:py-16 lg:py-20">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <div class="text-center mb-10 sm:mb-12 lg:mb-16">
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-2">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-950 mb-3 sm:mb-4 px-2">
         Lost in Transit? <span class="text-primary">We've Got You Covered</span>
       </h2>
       <p class="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-4 sm:px-0">
@@ -17,8 +17,8 @@ import HugeIcon from '../ui/HugeIcon';
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
       
       <!-- Problem Card 1 -->
-      <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-red-100 rounded-full flex items-center justify-center mb-4 sm:mb-6">
+      <div class="rounded-lg border border-gray-200 bg-stone-50 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-8">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-red-100 rounded-lg flex items-center justify-center mb-4 sm:mb-6">
           <HugeIcon client:load name="route-confused" className="w-7 h-7 sm:w-8 sm:h-8 text-red-600" size={32} />
         </div>
         <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-3">Confusing Routes</h3>
@@ -28,8 +28,8 @@ import HugeIcon from '../ui/HugeIcon';
       </div>
       
       <!-- Problem Card 2 -->
-      <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 sm:mb-6">
+      <div class="rounded-lg border border-gray-200 bg-stone-50 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-8">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-orange-100 rounded-lg flex items-center justify-center mb-4 sm:mb-6">
           <HugeIcon client:load name="conversation" className="w-7 h-7 sm:w-8 sm:h-8 text-orange-600" size={32} />
         </div>
         <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-3">Language Barriers</h3>
@@ -39,8 +39,8 @@ import HugeIcon from '../ui/HugeIcon';
       </div>
       
       <!-- Problem Card 3 -->
-      <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 sm:col-span-2 lg:col-span-1">
-        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-4 sm:mb-6">
+      <div class="rounded-lg border border-gray-200 bg-stone-50 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:col-span-2 sm:p-8 lg:col-span-1">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-yellow-100 rounded-lg flex items-center justify-center mb-4 sm:mb-6">
           <HugeIcon client:load name="clock" className="w-7 h-7 sm:w-8 sm:h-8 text-yellow-600" size={32} />
         </div>
         <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-3">Time Wasted</h3>
@@ -52,4 +52,3 @@ import HugeIcon from '../ui/HugeIcon';
     </div>
   </div>
 </section>
-

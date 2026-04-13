@@ -3,9 +3,13 @@ import AppStoreBadges from '../ui/AppStoreBadges.astro';
 import HugeIcon from '../ui/HugeIcon';
 ---
 
-<section id="download" class="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-primary via-primary-dark to-secondary relative overflow-hidden">
-  <div class="absolute inset-0 bg-black/10"></div>
-  
+<section id="download" class="relative overflow-hidden bg-primary py-12 sm:py-16 lg:py-24">
+  <div
+    class="absolute inset-0 opacity-20"
+    style="background-image: linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px); background-size: 42px 42px;"
+  >
+  </div>
+
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="text-center">
       
@@ -38,8 +42,4 @@ import HugeIcon from '../ui/HugeIcon';
       
     </div>
   </div>
-  
-  <!-- Decorative Elements -->
-  <div class="absolute top-0 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-white/5 rounded-full blur-3xl"></div>
-  <div class="absolute bottom-0 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-white/5 rounded-full blur-3xl"></div>
 </section>

@@ -5,8 +5,8 @@
  * This script is used during Vercel builds to create .npmrc from environment variables
  */
 
-import { writeFileSync } from 'fs';
-import { join } from 'path';
+import { writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 const HUGEICONS_LICENSE_KEY = process.env.HUGEICONS_LICENSE_KEY;
 
@@ -32,4 +32,3 @@ try {
   console.error('❌ Failed to create .npmrc file:', error);
   process.exit(1);
 }
-

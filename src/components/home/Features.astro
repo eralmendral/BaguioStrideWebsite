@@ -1,5 +1,4 @@
 ---
-import FeatureCard from '../ui/FeatureCard.astro';
 import FeatureIcon from '../ui/FeatureIcon';
 
 const features = [
@@ -49,7 +48,7 @@ const features = [
 ];
 ---
 
-<section id="features" class="py-12 sm:py-16 lg:py-24 bg-white">
+<section id="features" class="bg-white py-12 sm:py-16 lg:py-24">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <div class="text-center mb-10 sm:mb-12 lg:mb-16">
@@ -63,16 +62,18 @@ const features = [
     
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
       {features.map((feature) => (
-        <div class="group p-5 sm:p-6 rounded-2xl border-2 border-gray-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300">
+        <div class="group rounded-lg border border-gray-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg sm:p-6">
           <div class={`w-12 h-12 sm:w-14 sm:h-14 ${
             feature.color === 'primary' ? 'bg-primary/10 text-primary' :
             feature.color === 'secondary' ? 'bg-secondary/10 text-secondary' :
             'bg-accent/10 text-accent'
-          } rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform`}>
+          } rounded-lg flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-105 transition-transform`}>
             <FeatureIcon client:load icon={feature.icon} className="w-6 h-6 sm:w-7 sm:h-7" />
           </div>
           <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-          <p class="text-sm sm:text-base text-primary font-semibold mb-2 sm:mb-3">{feature.subtitle}</p>
+          <p class="text-sm sm:text-base text-primary font-semibold mb-2 sm:mb-3">
+            {feature.subtitle}
+          </p>
           <p class="text-sm sm:text-base text-gray-600">{feature.description}</p>
         </div>
       ))}
@@ -80,4 +81,3 @@ const features = [
     
   </div>
 </section>
-

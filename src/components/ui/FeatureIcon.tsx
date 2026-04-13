@@ -1,12 +1,14 @@
 import * as Icons from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
+import type { IconSvgElement } from '@hugeicons/react';
+
 interface FeatureIconProps {
   icon: string;
   className?: string;
 }
 
 // Map our icon names to HugeIcons Free icon names
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, IconSvgElement> = {
   'message-circle': Icons.Chat01Icon,
   mic: Icons.Mic01Icon,
   'ai-voice': Icons.AiVoiceIcon,

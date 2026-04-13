@@ -2,7 +2,10 @@
 import HugeIcon from '../ui/HugeIcon';
 ---
 
-<header class="fixed top-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm" id="header">
+<header
+  class="fixed top-0 z-50 w-full border-b border-gray-200/80 bg-white/90 shadow-sm backdrop-blur-md transition-all duration-300"
+  id="header"
+>
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16 md:h-20">
       <!-- Logo -->
@@ -19,7 +22,7 @@ import HugeIcon from '../ui/HugeIcon';
       <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
         <a href="#features" class="text-gray-700 hover:text-primary transition-colors duration-200 text-sm xl:text-base">Features</a>
         <a href="#how-it-works" class="text-gray-700 hover:text-primary transition-colors duration-200 text-sm xl:text-base">How It Works</a>
-        <a href="#download" class="btn btn-primary bg-primary hover:bg-primary-dark text-white border-none px-4 xl:px-6 py-2 text-sm xl:text-base whitespace-nowrap">Download App</a>
+        <a href="#download" class="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-primary-dark xl:px-6 xl:text-base whitespace-nowrap">Download App</a>
       </div>
       
       <!-- Mobile/Tablet Menu Button -->
@@ -37,7 +40,7 @@ import HugeIcon from '../ui/HugeIcon';
   <!-- Mobile/Tablet Menu -->
   <div 
     id="mobile-menu" 
-    class="hidden lg:hidden fixed inset-0 bg-white z-[60] transform translate-x-full transition-transform duration-300 ease-in-out"
+    class="fixed inset-0 z-[60] hidden translate-x-full transform bg-stone-50 transition-transform duration-300 ease-in-out lg:hidden"
     aria-hidden="true"
   >
     <div class="flex flex-col h-full">
@@ -72,9 +75,9 @@ import HugeIcon from '../ui/HugeIcon';
         >
           How It Works
         </a>
-        <a 
-          href="#download" 
-          class="btn btn-primary bg-primary hover:bg-primary-dark text-white border-none w-full mt-4 py-3 text-base font-semibold rounded-lg"
+        <a
+          href="#download"
+          class="mt-4 w-full rounded-lg bg-primary px-4 py-3 text-center text-base font-semibold text-white transition-colors duration-200 hover:bg-primary-dark"
         >
           Download App
         </a>
@@ -198,4 +201,3 @@ import HugeIcon from '../ui/HugeIcon';
     }
   });
 </script>
-

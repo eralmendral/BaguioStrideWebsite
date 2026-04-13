@@ -78,10 +78,15 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
 
   body {
-    @apply font-sans antialiased;
+    @apply bg-stone-50 font-sans text-gray-900 antialiased;
+  }
+
+  ::selection {
+    @apply bg-primary text-white;
   }
 }
 
@@ -113,5 +118,14 @@
 
   .animate-fade-in-up {
     animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-fade-in-up,
+    .animate-bounce,
+    .animate-ping {
+      animation: none;
+    }
   }
 }
